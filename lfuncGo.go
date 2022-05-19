@@ -8,8 +8,8 @@ func main() {
 	var xxx = dosomtingandReturn()
 
 	var aaa, bbb = multiReturn()
-	defer println(aaa, "  ", bbb)
-	defer println(xxx) //defer is do when function finish all
+	println(aaa, "  ", bbb)
+	println(xxx) //defer is do when function finish all
 }
 
 func dosomting() {

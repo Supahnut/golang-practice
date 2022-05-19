@@ -7,8 +7,8 @@ import (
 
 func main() {
 
-	var number = []int{0, 1, 2, 2, 3, 0, 4, 2}
-	var m = 2
+	var number = []int{3, 2, 2, 3}
+	var m = 3
 	//var n = 3
 	//go run leetcode.govar number2 = []int{2, 5, 6}
 	//fmt.Println(number)
@@ -108,15 +108,15 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 
 func removeElement(nums []int, val int) int {
 
-	var value int
-	fmt.Println(nums)
-	for i := 0; i <= len(nums); i++ {
+	for i := 0; i <= len(nums)-1; i++ {
 		if nums[i] == val {
-			nums = append(nums[i:i], nums[i+1:len(nums)-1]...)
-			i = 0
-			value++
+
+			nums = append(nums[:i], nums[i+1:len(nums)]...)
+
+			i = i - 1
+
 		}
+
 	}
-	fmt.Println(nums)
-	return value
+	return len(nums)
 }
