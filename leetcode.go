@@ -7,11 +7,13 @@ import (
 
 func main() {
 
-	var number = []int{-4, -1, 0, 3, 10}
+	var number = []int{1, 0, 2, 3, 0, 4, 5, 0}
+	fmt.Println(number)
 	//var maxcountovent int = findMaxConsecutiveOnes(number)
 	//maxcountovent = findNumbers(number)
 	//fmt.Println(maxcountovent)
-	fmt.Println(sortedSquares(number))
+	//fmt.Println(sortedSquares(number))
+	fmt.Println(duplicateZeros(number))
 }
 
 func findMaxConsecutiveOnes(nums []int) int {
@@ -40,6 +42,7 @@ func findMaxConsecutiveOnes(nums []int) int {
 
 	return memMaxCon
 }
+
 func findNumbers(nums []int) int {
 	var countmax int = 0
 
@@ -52,6 +55,7 @@ func findNumbers(nums []int) int {
 
 	return countmax
 }
+
 func checkDigit(number int) int {
 	var digit = 0
 	for number > 0 {
@@ -76,4 +80,17 @@ func sortedSquares(nums []int) []int {
 
 	return squares
 
+}
+
+func duplicateZeros(arr []int) []int {
+
+	for i := 0; i <= len(arr)-1; i++ {
+
+		if arr[i] == 0 {
+			arr = append(arr[:i+1], arr[i:len(arr)-1]...)
+			i++
+		}
+	}
+
+	return arr
 }
