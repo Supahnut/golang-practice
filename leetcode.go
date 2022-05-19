@@ -7,13 +7,18 @@ import (
 
 func main() {
 
-	var number = []int{1, 0, 2, 3, 0, 4, 5, 0}
-	fmt.Println(number)
+	var number = []int{0, 1, 2, 2, 3, 0, 4, 2}
+	var m = 2
+	//var n = 3
+	//go run leetcode.govar number2 = []int{2, 5, 6}
+	//fmt.Println(number)
 	//var maxcountovent int = findMaxConsecutiveOnes(number)
 	//maxcountovent = findNumbers(number)
 	//fmt.Println(maxcountovent)
 	//fmt.Println(sortedSquares(number))
-	fmt.Println(duplicateZeros(number))
+	//fmt.Println(duplicateZeros(number))
+	//merge(number, m, number2, n)
+	fmt.Println(removeElement(number, m))
 }
 
 func findMaxConsecutiveOnes(nums []int) int {
@@ -93,4 +98,25 @@ func duplicateZeros(arr []int) []int {
 	}
 
 	return arr
+}
+func merge(nums1 []int, m int, nums2 []int, n int) {
+	nums1 = append(nums1[:m], nums2[0:n]...)
+	sort.Ints(nums1)
+
+	fmt.Println(nums1)
+}
+
+func removeElement(nums []int, val int) int {
+
+	var value int
+	fmt.Println(nums)
+	for i := 0; i <= len(nums); i++ {
+		if nums[i] == val {
+			nums = append(nums[i:i], nums[i+1:len(nums)-1]...)
+			i = 0
+			value++
+		}
+	}
+	fmt.Println(nums)
+	return value
 }
