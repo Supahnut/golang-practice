@@ -7,8 +7,8 @@ import (
 
 func main() {
 
-	var number = []int{3, 2, 2, 3}
-	var m = 3
+	var number = []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
+	//var m = 3
 	//var n = 3
 	//go run leetcode.govar number2 = []int{2, 5, 6}
 	//fmt.Println(number)
@@ -18,7 +18,7 @@ func main() {
 	//fmt.Println(sortedSquares(number))
 	//fmt.Println(duplicateZeros(number))
 	//merge(number, m, number2, n)
-	fmt.Println(removeElement(number, m))
+	fmt.Println(removeDuplicates(number))
 }
 
 func findMaxConsecutiveOnes(nums []int) int {
@@ -115,6 +115,21 @@ func removeElement(nums []int, val int) int {
 
 			i = i - 1
 
+		}
+
+	}
+	return len(nums)
+}
+func removeDuplicates(nums []int) int {
+
+	sort.Ints(nums)
+
+	for i := 0; i <= len(nums)-1; i++ {
+		if i > 0 && nums[i] == nums[i-1] {
+
+			nums = append(nums[:i], nums[i+1:len(nums)]...)
+
+			i = i - 1
 		}
 
 	}
