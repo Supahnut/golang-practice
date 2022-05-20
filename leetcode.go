@@ -7,7 +7,7 @@ import (
 
 func main() {
 
-	var number = []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
+	var number = []int{-2, 0, 10, -19, 4, 6, -8}
 	//var m = 3
 	//var n = 3
 	//go run leetcode.govar number2 = []int{2, 5, 6}
@@ -18,7 +18,7 @@ func main() {
 	//fmt.Println(sortedSquares(number))
 	//fmt.Println(duplicateZeros(number))
 	//merge(number, m, number2, n)
-	fmt.Println(removeDuplicates(number))
+	fmt.Println(checkIfExist(number))
 }
 
 func findMaxConsecutiveOnes(nums []int) int {
@@ -134,4 +134,35 @@ func removeDuplicates(nums []int) int {
 
 	}
 	return len(nums)
+}
+func checkIfExist(arr []int) bool {
+
+	var rs = false
+	for i := 0; i < len(arr)-1; i++ {
+		rs = linearserch(i, arr)
+		if rs {
+			break
+		}
+	}
+	return rs
+
+}
+func linearserch(item int, arr []int) bool {
+	var found bool = false
+	for i := 0; i <= len(arr)-1; i++ {
+		if item != i && (arr[i]*2) == arr[item] {
+			found = true
+			break
+		}
+	}
+	return found
+}
+func validMountainArray(arr []int) bool {
+	var isMountain bool = false
+
+	if len(arr)-1 >= 3 {
+		isMountain = true
+	}
+
+	return isMountain
 }
