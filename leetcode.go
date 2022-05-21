@@ -7,7 +7,8 @@ import (
 
 func main() {
 
-	var number = []int{-2, 0, 10, -19, 4, 6, -8}
+	var number = []int{3,1,2,4}
+	fmt.Println(number)
 	//var m = 3
 	//var n = 3
 	//go run leetcode.govar number2 = []int{2, 5, 6}
@@ -18,7 +19,9 @@ func main() {
 	//fmt.Println(sortedSquares(number))
 	//fmt.Println(duplicateZeros(number))
 	//merge(number, m, number2, n)
-	fmt.Println(checkIfExist(number))
+	//fmt.Println(checkIfExist(number))
+	fmt.Println(sortArrayByParity(number))
+
 }
 
 func findMaxConsecutiveOnes(nums []int) int {
@@ -158,11 +161,112 @@ func linearserch(item int, arr []int) bool {
 	return found
 }
 func validMountainArray(arr []int) bool {
-	var isMountain bool = false
+    
+	var increase = false;
+	var decrease = false;
 
-	if len(arr)-1 >= 3 {
-		isMountain = true
+	if len(arr)< 3 {
+		return false
 	}
 
-	return isMountain
+	if arr[1]<arr[0]{
+		return false
+	}
+		for i:=1 ;i<=len(arr)-1;i++{
+			if (arr[i] == arr[i - 1]) {
+					return false
+				}
+			if (arr[i] >arr[i - 1]) {
+				
+				if (decrease == true) {
+					return false
+				}
+				increase = true
+			}
+			if (arr[i] < arr[i - 1]) {
+				decrease = true
+			}
+
+
+		}
+
+	if (increase == true && decrease == true) {
+		return true
+	} else {
+		return false
+		}
+	return false
 }
+
+func replaceElements(arr []int) []int {
+    
+	
+	var maxnum int = arr[len(arr)-1]
+
+	for i:=len(arr)-2;i>=0;i--{
+		
+		var mem int = arr[i]
+		arr[i]= maxnum
+		if(mem>maxnum) {
+			maxnum = mem
+		}		
+	}
+
+	arr[len(arr)-1] = -1
+
+	return arr
+}
+func moveZeroes(nums []int) []int {
+    
+	if len(nums)==0{
+		return nums
+	}
+	
+	var newarr  = []int{}
+	var cntZero  int = 0
+
+	for i:=0;i<=len(nums)-1;i++{
+		
+		if nums[i]!=0{
+			newarr = append(newarr, nums[i])
+		}else{
+			cntZero++
+		}
+
+		
+	}
+
+	for i:=0;i<cntZero;i++{
+		newarr = append(newarr,0 )
+	}
+
+	for i:=0;i<=len(newarr)-1;i++{
+		
+	nums[i]=newarr[i]
+		
+	}
+	
+	return nums
+}
+
+func sortArrayByParity(nums []int) []int {
+    
+    var  evearr  = []int{}
+	var  oddarr  = []int{}
+
+	for i:=0;i<=len(nums)-1;i++{
+		
+		if nums[i]%2==0{
+			evearr = append(evearr, nums[i])
+		}else{
+			oddarr = append(oddarr, nums[i])
+		}
+
+		
+	}
+
+	evearr = append(evearr, oddarr...) 
+
+	return  evearr
+}
+
